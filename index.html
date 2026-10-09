@@ -1,1 +1,501 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>FOOTSTORE | Boutique de football</title>
+
+    <meta name="description"
+          content="Découvrez nos maillots, ballons, chaussures et accessoires de football. Commandez facilement sur WhatsApp.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #101d35;
+            --green: #16a34a;
+            --green-dark: #12813c;
+            --light: #f3f6f4;
+            --white: #ffffff;
+            --text: #263238;
+            --muted: #667085;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .topbar {
+            background: var(--green);
+            color: white;
+            text-align: center;
+            padding: 9px 12px;
+            font-size: 13px;
+        }
+
+        header {
+            background: var(--navy);
+            color: white;
+            padding: 18px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #4ade80;
+        }
+
+        nav {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #4ade80;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #101d35, #183e35);
+            color: white;
+            padding: 65px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(30px, 6vw, 46px);
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            color: #4ade80;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 0 auto 25px;
+            color: #e1e8e4;
+            font-size: 16px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--green);
+            color: white;
+            padding: 13px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            background: var(--green-dark);
+        }
+
+        .section {
+            padding: 45px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 10px;
+            color: var(--navy);
+            font-size: 29px;
+        }
+
+        .section-description {
+            text-align: center;
+            color: var(--muted);
+            margin-bottom: 30px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(16, 29, 53, 0.08);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .product-image {
+            min-height: 155px;
+            background: #e5f3e9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 70px;
+        }
+
+        .card-content {
+            padding: 18px;
+        }
+
+        .card h3 {
+            color: var(--navy);
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .price {
+            color: var(--green-dark);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .order {
+            display: block;
+            text-align: center;
+            background: var(--green);
+            color: white;
+            padding: 11px 8px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .order:hover {
+            background: var(--green-dark);
+        }
+
+        .advantages {
+            background: white;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 35px 5%;
+            text-align: center;
+        }
+
+        .advantage {
+            padding: 10px;
+        }
+
+        .advantage .icon {
+            font-size: 35px;
+            margin-bottom: 8px;
+        }
+
+        .advantage h3 {
+            color: var(--navy);
+            margin-bottom: 5px;
+        }
+
+        .advantage p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .contact {
+            background: #e5f3e9;
+            text-align: center;
+            padding: 45px 20px;
+        }
+
+        .contact h2 {
+            color: var(--navy);
+            margin-bottom: 10px;
+        }
+
+        .contact p {
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background: var(--navy);
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+            font-size: 13px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 18px;
+            right: 18px;
+            background: #25d366;
+            color: white;
+            padding: 13px 16px;
+            border-radius: 30px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+        }
+
+        @media (max-width: 900px) {
+            .products {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                justify-content: center;
+                text-align: center;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 48px 18px;
+            }
+
+            .section {
+                padding: 35px 4%;
+            }
+
+            .products {
+                gap: 12px;
+            }
+
+            .product-image {
+                min-height: 120px;
+                font-size: 55px;
+            }
+
+            .card-content {
+                padding: 12px;
+            }
+
+            .card h3 {
+                font-size: 15px;
+            }
+
+            .order {
+                font-size: 12px;
+            }
+
+            .advantages {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .logo {
+                font-size: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topbar">
+        ⚽ Votre boutique de football — Commandez facilement sur WhatsApp
+    </div>
+
+    <header>
+        <a href="#accueil" class="logo">
+            FOOT<span>STORE</span>
+        </a>
+
+        <nav>
+            <a href="#accueil">Accueil</a>
+            <a href="#produits">Produits</a>
+            <a href="#avantages">Nos services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="hero" id="accueil">
+            <h1>
+                Vivez votre passion<br>
+                <span>du football !</span>
+            </h1>
+
+            <p>
+                Découvrez notre sélection de maillots, ballons,
+                chaussures et accessoires pour vivre pleinement
+                votre passion du football.
+            </p>
+
+            <a href="#produits" class="btn">
+                Découvrir nos produits
+            </a>
+        </section>
+
+        <section class="section" id="produits">
+            <h2 class="section-title">Nos produits</h2>
+
+            <p class="section-description">
+                Choisissez votre équipement et commandez directement.
+            </p>
+
+            <div class="products">
+
+                <article class="card">
+                    <div class="product-image">👕</div>
+
+                    <div class="card-content">
+                        <h3>Maillot de football</h3>
+                        <p class="price">Prix à confirmer</p>
+
+                        <a class="order"
+                           href="https://wa.me/22967254800?text=Bonjour%2C%20je%20souhaite%20commander%20un%20maillot%20de%20football."
+                           target="_blank"
+                           rel="noopener">
+                            Commander sur WhatsApp
+                        </a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="product-image">⚽</div>
+
+                    <div class="card-content">
+                        <h3>Ballon de football</h3>
+                        <p class="price">Prix à confirmer</p>
+
+                        <a class="order"
+                           href="https://wa.me/22967254800?text=Bonjour%2C%20je%20souhaite%20commander%20un%20ballon%20de%20football."
+                           target="_blank"
+                           rel="noopener">
+                            Commander sur WhatsApp
+                        </a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="product-image">🥾</div>
+
+                    <div class="card-content">
+                        <h3>Chaussures de football</h3>
+                        <p class="price">Prix à confirmer</p>
+
+                        <a class="order"
+                           href="https://wa.me/22967254800?text=Bonjour%2C%20je%20souhaite%20commander%20des%20chaussures%20de%20football."
+                           target="_blank"
+                           rel="noopener">
+                            Commander sur WhatsApp
+                        </a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="product-image">🧦</div>
+
+                    <div class="card-content">
+                        <h3>Chaussettes de sport</h3>
+                        <p class="price">Prix à confirmer</p>
+
+                        <a class="order"
+                           href="https://wa.me/22967254800?text=Bonjour%2C%20je%20souhaite%20commander%20des%20chaussettes%20de%20sport."
+                           target="_blank"
+                           rel="noopener">
+                            Commander sur WhatsApp
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="advantages" id="avantages">
+
+            <div class="advantage">
+                <div class="icon">📱</div>
+                <h3>Commande facile</h3>
+                <p>Contactez-nous directement sur WhatsApp.</p>
+            </div>
+
+            <div class="advantage">
+                <div class="icon">⚽</div>
+                <h3>Passion football</h3>
+                <p>Des équipements pour les amateurs de football.</p>
+            </div>
+
+            <div class="advantage">
+                <div class="icon">🚚</div>
+                <h3>Livraison à confirmer</h3>
+                <p>Contactez-nous pour connaître les zones et frais de livraison.</p>
+            </div>
+
+        </section>
+
+        <section class="contact" id="contact">
+            <h2>Besoin d'informations ?</h2>
+
+            <p>
+                Écrivez-nous pour connaître les prix,
+                les tailles disponibles et les modalités de livraison.
+            </p>
+
+            <a class="btn"
+               href="https://wa.me/22967254800?text=Bonjour%2C%20je%20voudrais%20des%20informations%20sur%20vos%20produits."
+               target="_blank"
+               rel="noopener">
+                Nous contacter sur WhatsApp
+            </a>
+        </section>
+
+    </main>
+
+    <footer>
+        <p><strong>FOOTSTORE</strong> — Votre passion, notre football.</p>
+        <p>Commandes et renseignements sur WhatsApp.</p>
+        <p>&copy; <span id="year"></span> FOOTSTORE. Tous droits réservés.</p>
+    </footer>
+
+    <a class="whatsapp-float"
+       href="https://wa.me/22967254800?text=Bonjour%2C%20je%20voudrais%20des%20informations%20sur%20vos%20produits."
+       target="_blank"
+       rel="noopener"
+       aria-label="Contacter FOOTSTORE sur WhatsApp">
+        WhatsApp
+    </a>
+
+    <script>
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+    </script>
+
+</body>
+  </html>
